@@ -73,8 +73,8 @@ export default {
           this.setCookie('role', data.role, 7); // Role expires in 7 days
           Swal.fire({
             icon: 'success',
-            title: 'Login Successful',
-            text: 'You have successfully logged in!',
+            title: 'Login Berhasil',
+            text: 'Anda telah berhasil login!',
             timer: 2000,
             showConfirmButton: false
           }).then(() => {
@@ -83,8 +83,8 @@ export default {
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Login Failed',
-            text: 'Invalid username or password. Please try again.'
+            title: 'Login Gagal',
+            text: 'Username atau password salah. Silakan coba lagi.'
           });
         }
       } catch (error) {
