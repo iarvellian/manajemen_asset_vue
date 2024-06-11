@@ -66,7 +66,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("http://127.0.0.1:8000/api/users/", {
+        .get("https://wopcefo.sga.dom.my.id/api/users/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -93,7 +93,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://127.0.0.1:8000/api/users/${id_user}`, {
+            .delete(`https://wopcefo.sga.dom.my.id/api/users/${id_user}`, {
               headers: {
                 Authorization: "Bearer " + this.getCookie("token"),
               },

@@ -105,7 +105,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("http://127.0.0.1:8000/api/role/", {
+        .get("https://wopcefo.sga.dom.my.id/api/role/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -132,7 +132,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://127.0.0.1:8000/api/role/", {
+            .post("https://wopcefo.sga.dom.my.id/api/role/", {
               nama_role: this.form.nama_role,
             }, {
               headers: {
@@ -179,7 +179,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put(`http://127.0.0.1:8000/api/role/${this.roleId}`, {
+            .put(`https://wopcefo.sga.dom.my.id/api/role/${this.roleId}`, {
               nama_role: this.form.nama_role,
             }, {
               headers: {
@@ -225,7 +225,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://127.0.0.1:8000/api/role/${id_role}`, {
+            .delete(`https://wopcefo.sga.dom.my.id/api/role/${id_role}`, {
               headers: {
                 Authorization: "Bearer " + this.getCookie("token"),
               },

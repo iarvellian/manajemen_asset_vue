@@ -105,7 +105,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("http://127.0.0.1:8000/api/lokasi/", {
+        .get("https://wopcefo.sga.dom.my.id/api/lokasi/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -132,7 +132,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://127.0.0.1:8000/api/lokasi/", {
+            .post("https://wopcefo.sga.dom.my.id/api/lokasi/", {
               nama_lokasi: this.form.nama_lokasi,
             }, {
               headers: {
@@ -179,7 +179,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put(`http://127.0.0.1:8000/api/lokasi/${this.lokasiId}`, {
+            .put(`https://wopcefo.sga.dom.my.id/api/lokasi/${this.lokasiId}`, {
               nama_lokasi: this.form.nama_lokasi,
             }, {
               headers: {
@@ -225,7 +225,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://127.0.0.1:8000/api/lokasi/${id_lokasi}`, {
+            .delete(`https://wopcefo.sga.dom.my.id/api/lokasi/${id_lokasi}`, {
               headers: {
                 Authorization: "Bearer " + this.getCookie("token"),
               },

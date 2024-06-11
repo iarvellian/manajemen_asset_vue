@@ -100,7 +100,7 @@ export default {
     methods: {
         fetchData() {
             axios
-                .get("http://127.0.0.1:8000/api/profile/", {
+                .get("https://wopcefo.sga.dom.my.id/api/profile/", {
                     headers: {
                         Authorization: "Bearer " + this.getCookie("token"),
                     },
@@ -140,7 +140,7 @@ export default {
             };
 
             axios
-                .put("http://127.0.0.1:8000/api/profile", updateData, {
+                .put("https://wopcefo.sga.dom.my.id/api/profile", updateData, {
                     headers: {
                         Authorization: "Bearer " + this.getCookie("token"),
                     },

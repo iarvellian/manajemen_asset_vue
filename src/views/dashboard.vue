@@ -192,7 +192,7 @@ export default {
     methods: {
         fetchCounts() {
             axios
-                .get("http://127.0.0.1:8000/api/counts", {
+                .get("https://wopcefo.sga.dom.my.id/api/counts", {
                     headers: {
                         Authorization: "Bearer " + this.getCookie("token"),
                     },

@@ -231,7 +231,7 @@ export default {
   methods: {
     fetchDatas() {
       axios
-        .get("http://127.0.0.1:8000/api/lokasi/", {
+        .get("https://wopcefo.sga.dom.my.id/api/lokasi/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -245,7 +245,7 @@ export default {
         });
 
       axios
-        .get("http://127.0.0.1:8000/api/kode_projek/", {
+        .get("https://wopcefo.sga.dom.my.id/api/kode_projek/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -259,7 +259,7 @@ export default {
         });
 
       axios
-        .get("http://127.0.0.1:8000/api/kelas_aset/", {
+        .get("https://wopcefo.sga.dom.my.id/api/kelas_aset/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -273,7 +273,7 @@ export default {
         });
 
       axios
-        .get("http://127.0.0.1:8000/api/divisi/", {
+        .get("https://wopcefo.sga.dom.my.id/api/divisi/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -289,7 +289,7 @@ export default {
     fetchAssetData() {
       this.assetId = this.$route.params.id;
       axios
-        .get(`http://127.0.0.1:8000/api/asset/${this.assetId}`, {
+        .get(`https://wopcefo.sga.dom.my.id/api/asset/${this.assetId}`, {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -332,7 +332,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put(`http://127.0.0.1:8000/api/asset/${this.assetId}`, {
+            .put(`https://wopcefo.sga.dom.my.id/api/asset/${this.assetId}`, {
               thn_perolehan: this.thnPerolehan,
               id_lokasi: this.lokasi,
               ue: this.ue,

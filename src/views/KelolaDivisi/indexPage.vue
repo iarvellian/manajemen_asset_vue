@@ -105,7 +105,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("http://127.0.0.1:8000/api/divisi/", {
+        .get("https://wopcefo.sga.dom.my.id/api/divisi/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -132,7 +132,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://127.0.0.1:8000/api/divisi/", {
+            .post("https://wopcefo.sga.dom.my.id/api/divisi/", {
               nama_divisi: this.form.nama_divisi,
             }, {
               headers: {
@@ -179,7 +179,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put(`http://127.0.0.1:8000/api/divisi/${this.divisiId}`, {
+            .put(`https://wopcefo.sga.dom.my.id/api/divisi/${this.divisiId}`, {
               nama_divisi: this.form.nama_divisi,
             }, {
               headers: {
@@ -225,7 +225,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://127.0.0.1:8000/api/divisi/${id_divisi}`, {
+            .delete(`https://wopcefo.sga.dom.my.id/api/divisi/${id_divisi}`, {
               headers: {
                 Authorization: "Bearer " + this.getCookie("token"),
               },

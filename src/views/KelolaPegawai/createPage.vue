@@ -76,7 +76,7 @@
     methods: {
       fetchRoles() {
         axios
-        .get("http://127.0.0.1:8000/api/role/", {
+        .get("https://wopcefo.sga.dom.my.id/api/role/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -102,7 +102,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             axios
-              .post("http://127.0.0.1:8000/api/register/", {
+              .post("https://wopcefo.sga.dom.my.id/api/register/", {
                 nama_pegawai: this.namaPegawai,
                 jabatan: this.jabatan,
                 username: this.username,

@@ -105,7 +105,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("http://127.0.0.1:8000/api/kode_projek/", {
+        .get("https://wopcefo.sga.dom.my.id/api/kode_projek/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -132,7 +132,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://127.0.0.1:8000/api/kode_projek/", {
+            .post("https://wopcefo.sga.dom.my.id/api/kode_projek/", {
               nama_kode_projek: this.form.nama_kode_projek,
             }, {
               headers: {
@@ -179,7 +179,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put(`http://127.0.0.1:8000/api/kode_projek/${this.kodeProjekId}`, {
+            .put(`https://wopcefo.sga.dom.my.id/api/kode_projek/${this.kodeProjekId}`, {
               nama_kode_projek: this.form.nama_kode_projek,
             }, {
               headers: {
@@ -225,7 +225,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-          .delete(`http://127.0.0.1:8000/api/kode_projek/${id_kode_projek}`, {
+          .delete(`https://wopcefo.sga.dom.my.id/api/kode_projek/${id_kode_projek}`, {
             headers: {
               Authorization: "Bearer " + this.getCookie("token"),
             },
