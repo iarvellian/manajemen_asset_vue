@@ -94,7 +94,11 @@
           <!-- Kondisi -->
           <div class="mb-3">
             <label for="inputKondisi" style="font-weight:bold;">Kondisi</label>
-            <input class="form-control" v-model="kondisi" id="inputKondisi" type="text" />
+            <select class="form-control" v-model="kondisi" id="inputKondisi">
+              <option disabled selected value="">Pilih Kondisi</option>
+              <option value="Baik">Baik</option>
+              <option value="Rusak">Rusak</option>
+            </select>
             <!-- Validation error message -->
             <div v-if="errors.kondisi" class="text-danger">{{ errors.kondisi }}</div>
           </div>
@@ -163,7 +167,7 @@
             <!-- Validation error message -->
             <div v-if="errors.id_divisi" class="text-danger">{{ errors.id_divisi }}</div>
           </div>
-          
+
           <!-- Apakah dari Luar Kota? -->
           <div class="mb-3">
             <label style="font-weight:bold;">Apakah dari Luar Kota?</label><br>
