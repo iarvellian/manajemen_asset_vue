@@ -20,6 +20,8 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" v-model="profile.nama_pegawai" />
+                                <!-- Validation error message -->
+                                <div v-if="errors.nama_pegawai" class="text-danger">{{ errors.nama_pegawai }}</div>
                             </div>
                         </div>
                         <hr>
@@ -29,6 +31,8 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" v-model="profile.jabatan" />
+                                <!-- Validation error message -->
+                                <div v-if="errors.jabatan" class="text-danger">{{ errors.jabatan }}</div>
                             </div>
                         </div>
                         <hr>
@@ -38,6 +42,8 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" v-model="profile.role.nama_role" disabled />
+                                <!-- Validation error message -->
+                                <div v-if="errors.role" class="text-danger">{{ errors.role }}</div>
                             </div>
                         </div>
                         <hr>
@@ -47,6 +53,8 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" class="form-control" v-model="profile.username" />
+                                <!-- Validation error message -->
+                                <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
                             </div>
                         </div>
                         <hr>
@@ -57,6 +65,8 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="password" class="form-control" v-model="newPassword" />
+                                <!-- Validation error message -->
+                                <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
                             </div>
                         </div>
                         <hr>
@@ -66,6 +76,9 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <input type="password" class="form-control" v-model="confirmNewPassword" />
+                                <!-- Validation error message -->
+                                <div v-if="errors.password_confirmation" class="text-danger">{{
+                                    errors.password_confirmation }}</div>
                             </div>
                         </div>
                         <hr>
@@ -92,6 +105,7 @@ export default {
             profile: null,
             newPassword: "",
             confirmNewPassword: "",
+            errors: {},
         };
     },
     mounted() {
@@ -158,8 +172,26 @@ export default {
                     });
                 })
                 .catch((error) => {
-                    console.error("Error updating profile:", error);
+                    if (error.response && error.response.status === 400) {
+                        this.errors = this.extractErrorMessages(error.response.data);
+                    } else {
+                        console.error("Error updating profile:", error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error!",
+                            text: "Failed to update profile.",
+                        });
+                    }
                 });
+        },
+        extractErrorMessages(errors) {
+            const errorMessages = {};
+            for (const key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    errorMessages[key] = errors[key][0];
+                }
+            }
+            return errorMessages;
         },
         getCookie(name) {
             const value = `; ${document.cookie}`;
