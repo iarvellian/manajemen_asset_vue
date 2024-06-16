@@ -369,15 +369,28 @@ export default {
               console.log("Asset updated successfully:", response.data);
             })
             .catch((error) => {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'Something went wrong.',
-              });
-              console.error("Error updating asset:", error);
+              if (error.response && error.response.status === 400) {
+                this.errors = this.extractErrorMessages(error.response.data);
+              } else {
+                console.error("Error updating asset:", error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Error!",
+                  text: "Failed to create asset.",
+                });
+              }
             });
         }
       });
+    },
+    extractErrorMessages(errors) {
+      const errorMessages = {};
+      for (const key in errors) {
+        if (errors.hasOwnProperty(key)) {
+          errorMessages[key] = errors[key][0];
+        }
+      }
+      return errorMessages;
     },
     cancelUpdating() {
       this.$router.push({ name: 'asset.index' });
