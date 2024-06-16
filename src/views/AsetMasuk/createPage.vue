@@ -206,7 +206,7 @@ export default {
         if (result.isConfirmed) {
           this.showBeritaAcaraForm = true;
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          this.createAssetMasuk(false, false);
+          this.createAssetMasuk(false, true);
         }
       });
     },
