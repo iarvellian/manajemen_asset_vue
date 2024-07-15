@@ -13,6 +13,14 @@
           <span class="text">Cetak Berita Acara Rusak</span>
         </button>
       </router-link>
+      <router-link :to="{ name: 'asset.import' }" class="ml-2">
+        <button class="btn btn-primary success btn-icon-split btn-sm">
+          <span class="icon text-white-50">
+            <i class="fas fa-file-excel"></i>
+          </span>
+          <span class="text">Import Data</span>
+        </button>
+      </router-link>
       <router-link :to="{ name: 'asset.create' }" class="ml-2">
         <button class="btn btn-success btn-icon-split btn-sm">
           <span class="icon text-white-50">
@@ -45,8 +53,8 @@
               <td>{{ asset.nama_aset }}</td>
               <td>{{ asset.jumlah_fisik }}</td>
               <td class="text-center">
-                <span v-if="asset.kondisi === 'Baik'" class="badge badge-success rounded-pill">{{ asset.kondisi }}</span>
-                <span v-else-if="asset.kondisi === 'Rusak'" class="badge badge-danger rounded-pill">{{ asset.kondisi }}</span>
+                <span v-if="asset.kondisi === 'Baik' || 'BAIK'" class="badge badge-success rounded-pill">{{ asset.kondisi }}</span>
+                <span v-else-if="asset.kondisi === 'Rusak' || 'RUSAK'" class="badge badge-danger rounded-pill">{{ asset.kondisi }}</span>
               </td>
               <td>{{ asset.serial_number }}</td>
               <td>

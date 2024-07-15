@@ -110,6 +110,12 @@ const routes = [
         component: () => import('@/views/Aset/printPage.vue'),
         meta: { requiresAuth: true, roles: ['superadmin', 'admin'] } 
       },
+      {
+        path: "/asset/import",
+        name: "asset.import",
+        component: () => import('@/views/Aset/importPage.vue'),
+        meta: { requiresAuth: true, roles: ['superadmin', 'admin'] } 
+      },
       // Route aset masuk
       {
         path: "/assetmasuk",
