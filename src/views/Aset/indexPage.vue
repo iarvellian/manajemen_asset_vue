@@ -53,8 +53,8 @@
               <td>{{ asset.nama_aset }}</td>
               <td>{{ asset.jumlah_fisik }}</td>
               <td class="text-center">
-                <span v-if="asset.kondisi === 'Baik' || 'BAIK'" class="badge badge-success rounded-pill">{{ asset.kondisi }}</span>
-                <span v-else-if="asset.kondisi === 'Rusak' || 'RUSAK'" class="badge badge-danger rounded-pill">{{ asset.kondisi }}</span>
+                  <span v-if="asset.kondisi.toLowerCase() === 'baik'" class="badge badge-success rounded-pill">{{ asset.kondisi }}</span>
+                  <span v-else-if="asset.kondisi.toLowerCase() === 'rusak'" class="badge badge-danger rounded-pill">{{ asset.kondisi }}</span>
               </td>
               <td>{{ asset.serial_number }}</td>
               <td>
