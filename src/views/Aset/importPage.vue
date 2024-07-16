@@ -35,47 +35,60 @@ export default {
             this.file = event.target.files[0];
         },
         async uploadFile() {
-            let formData = new FormData();
-            formData.append('file', this.file);
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: 'Anda akan mengunggah file.',
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: 'Ya, simpan!',
+                cancelButtonText: 'Batal',
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    let formData = new FormData();
+                    formData.append('file', this.file);
 
-            try {
-                await axios.post("https://wopcefo.sga.dom.my.id/api/asset/import", formData, {
-                    headers: {
-                        'Authorization': "Bearer " + this.getCookie("token"),
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Berhasil Upload File!',
-                }).then(() => {
-                    this.$router.push({ name: "asset.index" });
-                });
-            } catch (error) {
-                if (error.response) {
-                    if (error.response.status === 422) {
-                        this.errors = this.extractErrorMessages(error.response.data.errors);
-                        console.log("Validation errors:", error.response.data.errors);
-                    } else if (error.response.status === 400) {
-                        this.errors = this.extractErrorMessages(error.response.data);
-                    } else {
-                        console.error('Error uploading file:', error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            text: 'Failed to upload file. Please try again later.',
+                    try {
+                        await axios.post("https://wopcefo.sga.dom.my.id/api/asset/import", formData, {
+                            headers: {
+                                'Authorization': "Bearer " + this.getCookie("token"),
+                                'Content-Type': 'multipart/form-data',
+                            },
                         });
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: 'Berhasil Upload File!',
+                        }).then(() => {
+                            this.$router.push({ name: "asset.index" });
+                        });
+                    } catch (error) {
+                        if (error.response) {
+                            if (error.response.status === 422) {
+                                this.errors = this.extractErrorMessages(error.response.data.errors);
+                                console.log("Validation errors:", error.response.data.errors);
+                            } else if (error.response.status === 400) {
+                                this.errors = this.extractErrorMessages(error.response.data);
+                            } else {
+                                console.error('Error uploading file:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: 'Failed to upload file. Please try again later.',
+                                });
+                            }
+                        } else {
+                            console.error('Error uploading file:', error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: 'Failed to upload file. Please try again later.',
+                            });
+                        }
                     }
-                } else {
-                    console.error('Error uploading file:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        text: 'Failed to upload file. Please try again later.',
-                    });
                 }
-            }
+            });
         },
         extractErrorMessages(errors) {
             const errorMessages = {};
