@@ -13,8 +13,14 @@
           <span class="text">Cetak Berita Acara Rusak</span>
         </button>
       </router-link>
+      <button @click="exportAsset()" class="btn btn-secondary btn-icon-split btn-sm ml-2">
+        <span class="icon text-white-50">
+          <i class="fas fa-file-excel"></i>
+        </span>
+        <span class="text">Export Data</span>
+      </button>
       <router-link :to="{ name: 'asset.import' }" class="ml-2">
-        <button class="btn btn-primary success btn-icon-split btn-sm">
+        <button class="btn btn-primary btn-icon-split btn-sm">
           <span class="icon text-white-50">
             <i class="fas fa-file-excel"></i>
           </span>
@@ -53,8 +59,10 @@
               <td>{{ asset.nama_aset }}</td>
               <td>{{ asset.jumlah_fisik }}</td>
               <td class="text-center">
-                  <span v-if="asset.kondisi.toLowerCase() === 'baik'" class="badge badge-success rounded-pill">{{ asset.kondisi }}</span>
-                  <span v-else-if="asset.kondisi.toLowerCase() === 'rusak'" class="badge badge-danger rounded-pill">{{ asset.kondisi }}</span>
+                <span v-if="asset.kondisi.toLowerCase() === 'baik'" class="badge badge-success rounded-pill">{{
+        asset.kondisi }}</span>
+                <span v-else-if="asset.kondisi.toLowerCase() === 'rusak'" class="badge badge-danger rounded-pill">{{
+        asset.kondisi }}</span>
               </td>
               <td>{{ asset.serial_number }}</td>
               <td>
@@ -215,6 +223,45 @@ export default {
         .catch((error) => {
           console.error("Error fetching asset details:", error);
         });
+    },
+    exportAsset() {
+      Swal.fire({
+        title: 'Apakah anda yakin?',
+        text: "Anda akan mengekspor data aset",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, ekspor!',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .get(`https://wopcefo.sga.dom.my.id/api/asset_export`, {
+              headers: {
+                Authorization: "Bearer " + this.getCookie("token"),
+              },
+              responseType: 'blob' // important to handle the file as a blob
+            })
+            .then((response) => {
+              const url = window.URL.createObjectURL(new Blob([response.data]));
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', 'asset_data.xlsx');
+              document.body.appendChild(link);
+              link.click();
+              Swal.fire(
+                'Terekspor!',
+                'Data anda telah berhasil diekspor.',
+                'success'
+              );
+            })
+            .catch((error) => {
+              Swal.fire('Error!', 'Something went wrong during the export.', 'error');
+              console.error("Error exporting asset:", error);
+            });
+        }
+      });
     },
     initDataTable() {
       this.$nextTick(() => {
