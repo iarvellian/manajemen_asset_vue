@@ -26,13 +26,27 @@
           </div>
           <div class="mb-3">
             <label for="inputPassword" style="font-weight:bold;">Password</label>
-            <input class="form-control" v-model="password" id="inputPassword" type="text" placeholder="Masukkan Password" />
+            <div class="input-group">
+            <input :type="passwordVisible ? 'text' : 'password'" class="form-control" v-model="password" id="inputPassword" placeholder="Masukkan Password" />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" @click="togglePasswordVisibility">
+                <i :class="passwordVisible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+              </button>
+            </div>
+          </div>
             <!-- Validation error message -->
             <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
           </div>
           <div class="mb-3">
             <label for="inputKonfirmasiPassword" style="font-weight:bold;">Konfirmasi Password</label>
-            <input class="form-control" v-model="passwordConfirmation" id="inputKonfirmasiPassword" type="text" placeholder="Tulis Ulang Password" />
+            <div class="input-group">
+              <input :type="passwordConfirmationVisible ? 'text' : 'password'" class="form-control" v-model="passwordConfirmation" id="inputKonfirmasiPassword" placeholder="Tulis Ulang Password" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" @click="togglePasswordConfirmationVisibility">
+                  <i :class="passwordConfirmationVisible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                </button>
+              </div>
+            </div>
             <!-- Validation error message -->
             <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
           </div>
@@ -66,6 +80,10 @@
         password: "",
         passwordConfirmation: "",
         jenisRole: "",
+        password: '',
+        passwordConfirmation: '',
+        passwordVisible: false,
+        passwordConfirmationVisible: false,
         roles: [],
         errors: {},
       };
@@ -138,6 +156,12 @@
               });
           }
         });
+      },
+      togglePasswordVisibility() {
+        this.passwordVisible = !this.passwordVisible;
+      },
+      togglePasswordConfirmationVisibility() {
+        this.passwordConfirmationVisible = !this.passwordConfirmationVisible;
       },
       extractErrorMessages(errors) {
         const errorMessages = {};

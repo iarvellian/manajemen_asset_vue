@@ -64,10 +64,17 @@
                                 <h6 class="mb-0">Password Baru</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" v-model="newPassword" />
-                                <!-- Validation error message -->
-                                <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
+                            <div class="input-group">
+                            <input :type="newPasswordVisible ? 'text' : 'password'" class="form-control" v-model="newPassword" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" @click="toggleNewPasswordVisibility">
+                                <i :class="newPasswordVisible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                                </button>
                             </div>
+                            </div>
+                            <!-- Validation error message -->
+                            <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
+                        </div>
                         </div>
                         <hr>
                         <div class="row">
@@ -75,11 +82,17 @@
                                 <h6 class="mb-0">Konfirmasi Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="password" class="form-control" v-model="confirmNewPassword" />
-                                <!-- Validation error message -->
-                                <div v-if="errors.password_confirmation" class="text-danger">{{
-                                    errors.password_confirmation }}</div>
+                            <div class="input-group">
+                            <input :type="confirmNewPasswordVisible ? 'text' : 'password'" class="form-control" v-model="confirmNewPassword" />
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" @click="toggleConfirmNewPasswordVisibility">
+                                <i :class="confirmNewPasswordVisible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                                </button>
                             </div>
+                            </div>
+                            <!-- Validation error message -->
+                            <div v-if="errors.password_confirmation" class="text-danger">{{ errors.password_confirmation }}</div>
+                        </div>
                         </div>
                         <hr>
                         <div class="row">
@@ -105,6 +118,8 @@ export default {
             profile: null,
             newPassword: "",
             confirmNewPassword: "",
+            newPasswordVisible: false,
+            confirmNewPasswordVisible: false,
             errors: {},
         };
     },
@@ -183,6 +198,12 @@ export default {
                         });
                     }
                 });
+        },
+        toggleNewPasswordVisibility() {
+            this.newPasswordVisible = !this.newPasswordVisible;
+        },
+        toggleConfirmNewPasswordVisibility() {
+            this.confirmNewPasswordVisible = !this.confirmNewPasswordVisible;
         },
         extractErrorMessages(errors) {
             const errorMessages = {};
