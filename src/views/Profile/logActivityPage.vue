@@ -10,7 +10,7 @@
           <thead>
             <tr>
               <th>ID Log</th>
-              <th>Nama Tabel</th>
+              <!-- <th>Nama Tabel</th> -->
               <th>Aksi</th>
               <th>Data Lama</th>
               <th>Data Baru</th>
@@ -21,7 +21,7 @@
           <tbody>
             <tr v-for="logActivity in logActivities.data" :key="logActivity.id">
               <td>{{ logActivity.id }}</td>
-              <td>{{ logActivity.nama_tabel }}</td>
+              <!-- <td>{{ logActivity.nama_tabel }}</td> -->
               <td>{{ logActivity.aksi }} data</td>
               <td>
                 <ul v-if="logActivity.data_lama">
