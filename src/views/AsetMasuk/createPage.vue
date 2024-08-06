@@ -170,7 +170,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/transaksi_asset_keluar/", {
+        .get("http://127.0.0.1:8000/api/transaksi_asset_keluar/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -219,7 +219,7 @@ export default {
       };
 
       axios
-        .post("https://wopcefo.sga.dom.my.id/api/transaksi_asset_masuk", postData, {
+        .post("http://127.0.0.1:8000/api/transaksi_asset_masuk", postData, {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -270,7 +270,7 @@ export default {
           };
 
           axios
-            .post("https://wopcefo.sga.dom.my.id/api/berita_acara", beritaAcaraData, {
+            .post("http://127.0.0.1:8000/api/berita_acara", beritaAcaraData, {
               headers: {
                 'Authorization': "Bearer " + this.getCookie("token"),
                 'Content-Type': 'multipart/form-data'

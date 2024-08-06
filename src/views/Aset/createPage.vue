@@ -227,7 +227,7 @@ export default {
   methods: {
     fetchDatas() {
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/lokasi/", {
+        .get("http://127.0.0.1:8000/api/lokasi/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -241,7 +241,7 @@ export default {
         });
 
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/kode_projek/", {
+        .get("http://127.0.0.1:8000/api/kode_projek/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -255,7 +255,7 @@ export default {
         });
 
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/kelas_aset/", {
+        .get("http://127.0.0.1:8000/api/kelas_aset/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -269,7 +269,7 @@ export default {
         });
 
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/divisi/", {
+        .get("http://127.0.0.1:8000/api/divisi/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -296,7 +296,7 @@ export default {
         if (result.isConfirmed) {
           axios
             .post(
-              "https://wopcefo.sga.dom.my.id/api/asset/",
+              "http://127.0.0.1:8000/api/asset/",
               {
                 id_divisi: this.idDivisi,
                 id_lokasi: this.lokasi,

@@ -66,7 +66,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/log_aktivitas/", {
+        .get("http://127.0.0.1:8000/api/log_aktivitas/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },

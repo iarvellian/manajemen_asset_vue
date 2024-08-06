@@ -105,7 +105,7 @@ export default {
     methods: {
         async fetchAssets(query) {
             try {
-                const response = await axios.get("https://wopcefo.sga.dom.my.id/api/asset/", {
+                const response = await axios.get("http://127.0.0.1:8000/api/asset/", {
                     headers: {
                         Authorization: "Bearer " + this.getCookie("token"),
                     },
@@ -175,7 +175,7 @@ export default {
                         formData.append(`gambar[${index}]`, img.file);
                     });
 
-                    axios.post("https://wopcefo.sga.dom.my.id/api/berita_acara/", formData, {
+                    axios.post("http://127.0.0.1:8000/api/berita_acara/", formData, {
                         headers: {
                             'Authorization': "Bearer " + this.getCookie("token"),
                             'Content-Type': 'multipart/form-data'

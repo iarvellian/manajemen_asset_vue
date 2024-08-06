@@ -60,7 +60,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/transaksi_asset_keluar/", {
+        .get("http://127.0.0.1:8000/api/transaksi_asset_keluar/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },

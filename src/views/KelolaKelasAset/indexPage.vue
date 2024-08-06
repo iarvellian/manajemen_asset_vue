@@ -105,7 +105,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/kelas_aset/", {
+        .get("http://127.0.0.1:8000/api/kelas_aset/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -132,7 +132,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("https://wopcefo.sga.dom.my.id/api/kelas_aset/", {
+            .post("http://127.0.0.1:8000/api/kelas_aset/", {
               nama_kelas_aset: this.form.nama_kelas_aset,
             }, {
               headers: {
@@ -179,7 +179,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put(`https://wopcefo.sga.dom.my.id/api/kelas_aset/${this.kelasAsetId}`, {
+            .put(`http://127.0.0.1:8000/api/kelas_aset/${this.kelasAsetId}`, {
               nama_kelas_aset: this.form.nama_kelas_aset,
             }, {
               headers: {
@@ -225,7 +225,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-          .delete(`https://wopcefo.sga.dom.my.id/api/kelas_aset/${id_kelas_aset}`, {
+          .delete(`http://127.0.0.1:8000/api/kelas_aset/${id_kelas_aset}`, {
             headers: {
               Authorization: "Bearer " + this.getCookie("token"),
             },

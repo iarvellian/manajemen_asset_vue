@@ -161,7 +161,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://wopcefo.sga.dom.my.id/api/asset/", {
+        .get("http://127.0.0.1:8000/api/asset/", {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -188,7 +188,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`https://wopcefo.sga.dom.my.id/api/asset/${id_asset}`, {
+            .delete(`http://127.0.0.1:8000/api/asset/${id_asset}`, {
               headers: {
                 Authorization: "Bearer " + this.getCookie("token"),
               },
@@ -207,7 +207,7 @@ export default {
     },
     showAssetDetails(id_asset) {
       axios
-        .get(`https://wopcefo.sga.dom.my.id/api/asset/${id_asset}`, {
+        .get(`http://127.0.0.1:8000/api/asset/${id_asset}`, {
           headers: {
             Authorization: "Bearer " + this.getCookie("token"),
           },
@@ -237,7 +237,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .get(`https://wopcefo.sga.dom.my.id/api/asset_export`, {
+            .get(`http://127.0.0.1:8000/api/asset_export`, {
               headers: {
                 Authorization: "Bearer " + this.getCookie("token"),
               },

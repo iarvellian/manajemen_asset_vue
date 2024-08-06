@@ -162,7 +162,7 @@ export default {
         // Function to fetch user information
         async function fetchUserData() {
             try {
-                const response = await fetch('https://wopcefo.sga.dom.my.id/api/profile', {
+                const response = await fetch('http://127.0.0.1:8000/api/profile', {
                     headers: {
                         'Authorization': 'Bearer ' + getCookie('token')
                     }
@@ -185,7 +185,7 @@ export default {
         // Function to logout
         async function logout() {
             try {
-                const response = await fetch('https://wopcefo.sga.dom.my.id/api/logout', {
+                const response = await fetch('http://127.0.0.1:8000/api/logout', {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer ' + getCookie('token') // Include the authentication token from cookies

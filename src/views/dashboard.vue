@@ -347,7 +347,7 @@ export default {
     methods: {
         fetchCounts() {
             axios
-                .get("https://wopcefo.sga.dom.my.id/api/counts", {
+                .get("http://127.0.0.1:8000/api/counts", {
                     headers: {
                         Authorization: "Bearer " + this.getCookie("token"),
                     },
@@ -362,7 +362,7 @@ export default {
         },
         fetchUserRole() {
             axios
-                .get("https://wopcefo.sga.dom.my.id/api/profile", {
+                .get("http://127.0.0.1:8000/api/profile", {
                     headers: {
                         Authorization: "Bearer " + this.getCookie("token"),
                     },

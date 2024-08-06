@@ -50,7 +50,7 @@ export default {
                     formData.append('file', this.file);
 
                     try {
-                        await axios.post("https://wopcefo.sga.dom.my.id/api/asset_import", formData, {
+                        await axios.post("http://127.0.0.1:8000/api/asset_import", formData, {
                             headers: {
                                 'Authorization': "Bearer " + this.getCookie("token"),
                                 'Content-Type': 'multipart/form-data',
