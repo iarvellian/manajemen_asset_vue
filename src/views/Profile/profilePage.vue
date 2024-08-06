@@ -27,6 +27,17 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
+                                <h6 class="mb-0">NIK</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" v-model="profile.nik" disabled />
+                                <!-- Validation error message -->
+                                <div v-if="errors.nik" class="text-danger">{{ errors.nik }}</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
                                 <h6 class="mb-0">Jabatan</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
